@@ -59,7 +59,7 @@ public class form_barang_masuk extends javax.swing.JFrame {
         btnitem = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        txtnew = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -228,10 +228,10 @@ public class form_barang_masuk extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Add new");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtnew.setText("Add new");
+        txtnew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtnewActionPerformed(evt);
             }
         });
 
@@ -278,7 +278,7 @@ public class form_barang_masuk extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnew, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -327,7 +327,7 @@ public class form_barang_masuk extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(txtnew)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jLabel16)
@@ -358,9 +358,10 @@ public class form_barang_masuk extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtsubActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_txtnewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,7 +405,6 @@ public class form_barang_masuk extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbdis;
     private javax.swing.JComboBox<String> cmbkode;
     private javax.swing.JComboBox<String> cmbpetugas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -432,6 +432,7 @@ public class form_barang_masuk extends javax.swing.JFrame {
     private javax.swing.JTextField txtkota;
     private javax.swing.JTextField txtnamabar;
     private javax.swing.JTextField txtnamadis;
+    private javax.swing.JButton txtnew;
     private javax.swing.JTextField txtnota;
     private javax.swing.JTextField txtpetugas;
     private javax.swing.JTextField txtstock;
