@@ -88,7 +88,7 @@ public class form_barang_masuk extends javax.swing.JFrame {
             }
         });
 
-        cmbpetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbpetugas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih petugas", " " }));
 
         txtkota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,13 +96,13 @@ public class form_barang_masuk extends javax.swing.JFrame {
             }
         });
 
-        cmbdis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbdis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih distributor" }));
 
         jLabel8.setText("Detail barang");
 
         jLabel9.setText("Kode barang");
 
-        cmbkode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbkode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih data barang", " ", " " }));
 
         jLabel10.setText("Nama barang");
 
@@ -271,10 +271,10 @@ public class form_barang_masuk extends javax.swing.JFrame {
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(btncaridata))
                                         .addComponent(txtbarangmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(cmbpetugas, 0, 271, Short.MAX_VALUE)
+                                        .addComponent(cmbpetugas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtpetugas)
                                         .addComponent(txtnamadis)
-                                        .addComponent(cmbdis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(cmbdis, 0, 271, Short.MAX_VALUE)))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)

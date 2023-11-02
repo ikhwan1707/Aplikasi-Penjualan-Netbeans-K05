@@ -52,10 +52,10 @@
                                           <Component id="btncaridata" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="txtbarangmasuk" min="-2" pref="147" max="-2" attributes="0"/>
-                                      <Component id="cmbpetugas" alignment="0" pref="271" max="32767" attributes="0"/>
+                                      <Component id="cmbpetugas" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtpetugas" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtnamadis" max="32767" attributes="0"/>
-                                      <Component id="cmbdis" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cmbdis" alignment="0" pref="271" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -186,11 +186,9 @@
     <Component class="javax.swing.JComboBox" name="cmbpetugas">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="2">
+            <StringItem index="0" value="Pilih petugas"/>
+            <StringItem index="1" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -210,11 +208,8 @@
     <Component class="javax.swing.JComboBox" name="cmbdis">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Pilih distributor"/>
           </StringArray>
         </Property>
       </Properties>
@@ -335,11 +330,10 @@
         <Component class="javax.swing.JComboBox" name="cmbkode">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Pilih data barang"/>
+                <StringItem index="1" value=" "/>
+                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>
