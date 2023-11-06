@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -5,11 +9,6 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 
 /**
  *
@@ -251,6 +250,11 @@ public class form_barang_masuk extends javax.swing.JFrame {
         });
 
         btnclose.setText("Close");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
+            }
+        });
 
         jLabel16.setText("Total     Rp.");
 
@@ -373,11 +377,28 @@ public class form_barang_masuk extends javax.swing.JFrame {
 
     private void txtnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewActionPerformed
         // TODO add your handling code here:String nis = txtnim.getText();
+        String nota = txtnota.getText();
+        String nama = txtpetugas.getText();
+        java.util.Date tanggalbarangmasuk = (java.util.Date) txtbarangmasuk.getValue();
+        String dis = txtnamadis.getText();
+        String kota = txtkota.getText();
+        
+        if ("".equals(nota)|| "".equals(nama)||
+            "".equals(tanggalbarangmasuk)||
+            "".equals(dis)|| "".equals(kota))
+        {
+         JOptionPane.showMessageDialog(this, "harap lengkapi data", "error", JOptionPane.WARNING_MESSAGE);   
+        }       
     }//GEN-LAST:event_txtnewActionPerformed
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnsaveActionPerformed
+
+    private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btncloseActionPerformed
 
     /**
      * @param args the command line arguments
