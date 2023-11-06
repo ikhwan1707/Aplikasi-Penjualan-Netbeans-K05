@@ -1,3 +1,11 @@
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -60,8 +68,8 @@ public class form_barang_masuk extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtnew = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnsave = new javax.swing.JButton();
+        btnclose = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         txttotal = new javax.swing.JTextField();
 
@@ -235,9 +243,14 @@ public class form_barang_masuk extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Save Transaction");
+        btnsave.setText("Save Transaction");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Close");
+        btnclose.setText("Close");
 
         jLabel16.setText("Total     Rp.");
 
@@ -280,9 +293,9 @@ public class form_barang_masuk extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(txtnew, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnsave, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnclose)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
@@ -328,8 +341,8 @@ public class form_barang_masuk extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnew)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(btnsave)
+                    .addComponent(btnclose)
                     .addComponent(jLabel16)
                     .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -359,9 +372,12 @@ public class form_barang_masuk extends javax.swing.JFrame {
     }//GEN-LAST:event_txtsubActionPerformed
 
     private void txtnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:String nis = txtnim.getText();
     }//GEN-LAST:event_txtnewActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,13 +416,13 @@ public class form_barang_masuk extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncaridata;
+    private javax.swing.JButton btnclose;
     private javax.swing.JButton btnhitung;
     private javax.swing.JButton btnitem;
+    private javax.swing.JButton btnsave;
     private javax.swing.JComboBox<String> cmbdis;
     private javax.swing.JComboBox<String> cmbkode;
     private javax.swing.JComboBox<String> cmbpetugas;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
