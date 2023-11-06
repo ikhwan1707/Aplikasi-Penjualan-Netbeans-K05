@@ -1,3 +1,11 @@
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +16,16 @@
  * @author SMKI Utama4
  */
 public class Form_Data_Distributor_Barang extends javax.swing.JFrame {
+    
+    private DefaultTableModel model;
 
     /**
      * Creates new form Form_Data_Distributor_Barang
      */
     public Form_Data_Distributor_Barang() {
         initComponents();
+        loadData();
+        kosong();
         setEnabledfalse();
     }
     
@@ -109,6 +121,11 @@ public class Form_Data_Distributor_Barang extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabeldistributor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabeldistributorMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabeldistributor);
 
         btnaddnew.setText("Add New");
@@ -235,6 +252,60 @@ public class Form_Data_Distributor_Barang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadData() {
+        
+        //membuat model
+        model = new DefaultTableModel();
+        
+        //menghapus seluruh data
+        model.getDataVector().removeAllElements();
+        //memberitahu bahwa data telah kosong
+        model.fireTableDataChanged();
+        
+        tabeldistributor.setModel(model);
+        model.addColumn("IDDistributor");
+        model.addColumn("NamaDistributor");
+        model.addColumn("Alamat");
+        model.addColumn("KotaAsal");
+        model.addColumn("Email");
+        model.addColumn("Telpon");
+        
+        try{
+        String sql = "SELECT * FROM tbldistributor";
+        
+        Connection c = koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        
+        while(r.next()){
+        //lakukan penelusuran baris
+        model.addRow(new Object[]{
+            r.getString(1),
+            r.getString(2),
+            r.getString(3),
+            r.getString(4),
+            r.getString(5),
+            r.getString(6)
+        });
+        }
+        tabeldistributor.setModel(model);
+        
+        }catch(SQLException e){
+            System.out.println("Terjadi Error");
+        }
+            
+    }
+    
+    private void kosong(){
+        txtid.setText(null);
+        txtnamadis.setText(null);
+        txaalamatdis.setText(null);
+        txtkota.setText(null);
+        txtemail.setText(null);
+        txtnotelp.setText(null);
+    }
+    
+    
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
         // TODO add your handling code here:
         setEnabledtrue();
@@ -243,14 +314,97 @@ public class Form_Data_Distributor_Barang extends javax.swing.JFrame {
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
-        setEnabledfalse();
-        btnaddnew.setEnabled(true);
+        String iddis = txtid.getText();
+        String namadis = txtnamadis.getText();
+        String alamatdis = txaalamatdis.getText();
+        String kota = txtkota.getText();
+        String email = txtemail.getText();
+        String notelp = txtnotelp.getText();
+        
+        if ("".equals(iddis) || "".equals(namadis) ||
+                "".equals(alamatdis) ||
+                "".equals(kota) || "".equals(email) || "".equals(notelp))
+            
+        {
+            JOptionPane.showMessageDialog(this,"Harap Lengkapi Data","Error",JOptionPane.WARNING_MESSAGE);
+        } else {
+            
+             try{
+                Connection c = koneksi.getKoneksi();
+                String sql = "INSERT INTO tbldistributor VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement p = c.prepareStatement(sql);
+                
+                p.setString(1, iddis);
+                p.setString(2, namadis);
+                p.setString(3, alamatdis);
+                p.setString(4, kota);
+                p.setString(5, email);
+                p.setString(6, notelp);
+                
+                p.executeUpdate();
+                p.close();
+                
+                JOptionPane.showMessageDialog(null, "Data Berhasil Ditambah ! ");
+                
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }finally{
+                loadData();
+                kosong();
+                setEnabledfalse();
+                btnaddnew.setEnabled(true);
+            }
+        }
+        
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
-        setEnabledfalse();
-        btnaddnew.setEnabled(true);
+        
+        int i = tabeldistributor.getSelectedRow();
+        
+        if(i == -1){
+            //tidak ada baris terseleksi
+            JOptionPane.showMessageDialog(this, "Harap Pilih Data Terlebih Dahulu!", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String iddis = (String) model.getValueAt(i, 0);
+        String namadis = txtnamadis.getText();
+        String alamatdis = txaalamatdis.getText();
+        String kota = txtkota.getText();
+        String email =txtemail.getText();
+        String notelp =txtnotelp.getText();
+        
+         try{
+            Connection c = koneksi.getKoneksi();
+            
+            String sql = "UPDATE tbldistributor SET NamaDistributor = ?, Alamat = ?, KotaAsal = ?, Email = ?, Telpon = ? WHERE IDDistributor = ? ";
+            
+            PreparedStatement p = c.prepareStatement(sql);
+            
+            p.setString(1,namadis);
+            p.setString(2,alamatdis);
+            p.setString(3, kota);
+            p.setString(4, email);
+            p.setString(5, notelp);
+            p.setString(6, iddis);
+            
+            p.executeUpdate();
+            p.close();
+            
+            JOptionPane.showMessageDialog(null, "Data Berhasil Diubah !");
+            
+             } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Terjadi Error" + e.getMessage());
+        } finally{
+            loadData();
+            kosong();
+            setEnabledfalse();
+            btnaddnew.setEnabled(true);
+         }          
+        
+    
     }//GEN-LAST:event_btnupdateActionPerformed
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
@@ -258,6 +412,31 @@ public class Form_Data_Distributor_Barang extends javax.swing.JFrame {
         setEnabledfalse();
         btnaddnew.setEnabled(true);
     }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void tabeldistributorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabeldistributorMouseClicked
+        // TODO add your handling code here:
+        
+        int baris = tabeldistributor.getSelectedRow();
+        
+        if(baris == -1){
+            //tak ada baris terseleksi
+            return;
+        }
+        
+        String iddis = tabeldistributor.getValueAt(baris, 0).toString();
+        txtid.setText(iddis);
+        String namadis = tabeldistributor.getValueAt(baris, 1).toString();
+        txtnamadis.setText(namadis);
+        String alamatdis = tabeldistributor.getValueAt(baris, 2).toString();
+        txaalamatdis.setText(alamatdis);
+        String kota = tabeldistributor.getValueAt(baris, 3).toString();
+        txtkota.setText(kota);
+        String email = tabeldistributor.getValueAt(baris, 4).toString();
+        txtemail.setText(email);
+        String notelp = tabeldistributor.getValueAt(baris,5).toString();
+        txtnotelp.setText(notelp);
+        
+    }//GEN-LAST:event_tabeldistributorMouseClicked
 
     /**
      * @param args the command line arguments

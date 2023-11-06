@@ -18,7 +18,7 @@ public class Form_data_barang extends javax.swing.JFrame {
     }
     
     public void setEnabledfalse(){
-        txtkodebarang.setEnabled(false);
+        txt_kodebarang.setEnabled(false);
         txtnamabarang.setEnabled(false);
         cmbkodejenis.setEnabled(false);
         txtharganet.setEnabled(false);
@@ -31,7 +31,7 @@ public class Form_data_barang extends javax.swing.JFrame {
     }
     
     public void setEnabledtrue(){
-        txtkodebarang.setEnabled(true);
+        txt_kodebarang.setEnabled(true);
         txtnamabarang.setEnabled(true);
         cmbkodejenis.setEnabled(true);
         txtharganet.setEnabled(true);
@@ -59,7 +59,7 @@ public class Form_data_barang extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtkodebarang = new javax.swing.JTextField();
+        txt_kodebarang = new javax.swing.JTextField();
         txtnamabarang = new javax.swing.JTextField();
         cmbkodejenis = new javax.swing.JComboBox<>();
         txtjenisbarang = new javax.swing.JTextField();
@@ -94,9 +94,9 @@ public class Form_data_barang extends javax.swing.JFrame {
 
         jLabel8.setText("Stok");
 
-        txtkodebarang.addActionListener(new java.awt.event.ActionListener() {
+        txt_kodebarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtkodebarangActionPerformed(evt);
+                txt_kodebarangActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class Form_data_barang extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtnamabarang)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtkodebarang, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txt_kodebarang, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +222,7 @@ public class Form_data_barang extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtkodebarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_kodebarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -263,9 +263,9 @@ public class Form_data_barang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtkodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkodebarangActionPerformed
+    private void txt_kodebarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_kodebarangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtkodebarangActionPerformed
+    }//GEN-LAST:event_txt_kodebarangActionPerformed
 
     private void txtnamabarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamabarangActionPerformed
         // TODO add your handling code here:
@@ -348,10 +348,10 @@ public class Form_data_barang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabeldatabarang;
+    private javax.swing.JTextField txt_kodebarang;
     private javax.swing.JTextField txthargajual;
     private javax.swing.JTextField txtharganet;
     private javax.swing.JTextField txtjenisbarang;
-    private javax.swing.JTextField txtkodebarang;
     private javax.swing.JTextField txtnamabarang;
     private javax.swing.JTextField txtstok;
     // End of variables declaration//GEN-END:variables
