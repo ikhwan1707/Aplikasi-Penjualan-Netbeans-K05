@@ -10,7 +10,7 @@
 public class Form_Petugas extends javax.swing.JFrame {
 
     /**
-     * Creates new form Form_Petugas
+     * Creates new form Form_petugas
      */
     public Form_Petugas() {
         initComponents();
