@@ -40,7 +40,11 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        Epassword.setText("jPasswordField1");
+        Epassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EpasswordActionPerformed(evt);
+            }
+        });
 
         btnlogin.setText("Login");
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +54,11 @@ public class login extends javax.swing.JFrame {
         });
 
         btnbatal.setText("Batal");
+        btnbatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +119,14 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Maaf User Dan Password Salah!", "Login", JOptionPane.DEFAULT_OPTION);
         }
     }//GEN-LAST:event_btnloginActionPerformed
+
+    private void EpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EpasswordActionPerformed
+
+    private void btnbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbatalActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnbatalActionPerformed
 
     /**
      * @param args the command line arguments
