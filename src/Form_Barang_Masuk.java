@@ -5,6 +5,9 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -18,6 +21,19 @@ import javax.swing.JOptionPane;
 public class Form_Barang_Masuk extends javax.swing.JFrame {
     
     private DefaultTableModel model;
+    private int nomorNota;
+    private int tanggal;
+    private int bulan;
+    private int tahun;
+        private void generateTanggal() {
+        LocalDate currentDate = LocalDate.now();
+        tanggal = currentDate.getDayOfMonth();
+        bulan = currentDate.getMonthValue();
+        tahun = currentDate.getYear();
+        // Set tanggal, bulan, tahun pada form
+        txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
+    }
+
 
     /**
      * Creates new form Form_Barang_Masuk
@@ -158,7 +174,19 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtbarangmasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbarangmasukActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Tanggal Barang Masuk");
+
+        txtnota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnotaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("No. Nota");
 
@@ -436,9 +464,9 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
                     .addComponent(txtnamadis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtkota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(txtkota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -544,6 +572,14 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         txtsubtotal.setText(Integer.toString(d,e));
         
     }//GEN-LAST:event_btnhitungActionPerformed
+
+    private void txtnotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnotaActionPerformed
+  
+    }//GEN-LAST:event_txtnotaActionPerformed
+
+    private void txtbarangmasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbarangmasukActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbarangmasukActionPerformed
 
     /**
      * @param args the command line arguments
