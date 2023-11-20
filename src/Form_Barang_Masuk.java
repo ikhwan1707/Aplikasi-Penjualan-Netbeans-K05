@@ -25,7 +25,10 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
     private int tanggal;
     private int bulan;
     private int tahun;
-        private void generateTanggal() {
+        
+    
+    
+    private void generateTanggal() {
         LocalDate currentDate = LocalDate.now();
         tanggal = currentDate.getDayOfMonth();
         bulan = currentDate.getMonthValue();
@@ -46,6 +49,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         TampilComboJenis1();
         TampilComboJenis2();
         setEnabledfalse();
+        generateTanggal();
     }
     
     public void TampilComboJenis(){
@@ -496,6 +500,8 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
         // TODO add your handling code here:
+        generateTanggal();
+        
         setEnabledtrue();
         btnaddnew.setEnabled(false);
     }//GEN-LAST:event_btnaddnewActionPerformed
