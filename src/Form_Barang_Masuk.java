@@ -25,8 +25,28 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
     private int tanggal;
     private int bulan;
     private int tahun;
+    private int nomornota = 0;
         
-    
+    private void generateNomorNota() {
+    try {
+        String query = "SELECT MAX(NomorNota) FROM nama_tabel";
+        Connection connection = koneksi.getKoneksi(); // Gantilah dengan metode yang sesuai untuk mendapatkan koneksi
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if (resultSet.next()) {
+            nomorNota = resultSet.getInt(1) + 1;
+        } else {
+            nomorNota = 1;
+        }
+
+        // Set nomorNota pada form
+        txtnota.setText(Integer.toString(nomorNota));
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+
     
 
 
@@ -492,16 +512,17 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
     }//GEN-LAST:event_btnsavetransActionPerformed
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
-        // TODO add your handling code here:
-        LocalDate currentDate = LocalDate.now();
-        tanggal = currentDate.getDayOfMonth();
-        bulan = currentDate.getMonthValue();
-        tahun = currentDate.getYear();
-        // Set tanggal, bulan, tahun pada form
-        txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
-        
-        setEnabledtrue();
-        btnaddnew.setEnabled(false);
+       
+        generateNomorNota();
+
+    LocalDate currentDate = LocalDate.now();
+    tanggal = currentDate.getDayOfMonth();
+    bulan = currentDate.getMonthValue();
+    tahun = currentDate.getYear();
+    txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
+
+    setEnabledtrue();
+    btnaddnew.setEnabled(false);
     }//GEN-LAST:event_btnaddnewActionPerformed
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
