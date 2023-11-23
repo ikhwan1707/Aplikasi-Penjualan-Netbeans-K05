@@ -213,6 +213,11 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
                 cmbpetugasItemStateChanged(evt);
             }
         });
+        cmbpetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbpetugasActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("ID Petugas");
 
@@ -342,7 +347,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
                     .addComponent(txtjumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(btnhitung))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtharga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
@@ -451,7 +456,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
                                 .addComponent(txtbarangmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,6 +610,10 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
     private void txtbarangmasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbarangmasukActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbarangmasukActionPerformed
+
+    private void cmbpetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbpetugasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbpetugasActionPerformed
 
     /**
      * @param args the command line arguments
