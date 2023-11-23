@@ -28,14 +28,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         
     
     
-    private void generateTanggal() {
-        LocalDate currentDate = LocalDate.now();
-        tanggal = currentDate.getDayOfMonth();
-        bulan = currentDate.getMonthValue();
-        tahun = currentDate.getYear();
-        // Set tanggal, bulan, tahun pada form
-        txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
-    }
+
 
 
     /**
@@ -49,7 +42,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         TampilComboJenis1();
         TampilComboJenis2();
         setEnabledfalse();
-        generateTanggal();
+        //generateTanggal();
     }
     
     public void TampilComboJenis(){
@@ -500,7 +493,12 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
         // TODO add your handling code here:
-        generateTanggal();
+        LocalDate currentDate = LocalDate.now();
+        tanggal = currentDate.getDayOfMonth();
+        bulan = currentDate.getMonthValue();
+        tahun = currentDate.getYear();
+        // Set tanggal, bulan, tahun pada form
+        txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
         
         setEnabledtrue();
         btnaddnew.setEnabled(false);
