@@ -172,7 +172,7 @@ public class Form_Jenis_Barang extends javax.swing.JFrame {
                         .addComponent(btncancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnclose)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +197,7 @@ public class Form_Jenis_Barang extends javax.swing.JFrame {
                     .addComponent(btndelete)
                     .addComponent(btncancel)
                     .addComponent(btnclose))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         pack();
@@ -322,7 +322,7 @@ public class Form_Jenis_Barang extends javax.swing.JFrame {
 
     private void btncloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncloseActionPerformed
         // TODO add your handling code here:
-        dispose();
+         dispose();
     }//GEN-LAST:event_btncloseActionPerformed
 
     private void tabeljenisbarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabeljenisbarMouseClicked

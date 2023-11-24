@@ -21,30 +21,16 @@ import java.time.format.DateTimeFormatter;
 public class Form_Barang_Masuk extends javax.swing.JFrame {
     
     private DefaultTableModel model;
-    private int nomorNota;
+    
     private int tanggal;
     private int bulan;
     private int tahun;
     private int nomornota = 0;
         
     private void generateNomorNota() {
-    try {
-        String query = "SELECT MAX(NomorNota) FROM nama_tabel";
-        Connection connection = koneksi.getKoneksi(); // Gantilah dengan metode yang sesuai untuk mendapatkan koneksi
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-
-        if (resultSet.next()) {
-            nomorNota = resultSet.getInt(1) + 1;
-        } else {
-            nomorNota = 1;
-        }
-
-        // Set nomorNota pada form
-        txtnota.setText(Integer.toString(nomorNota));
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-    }
+    nomornota++;
+    
+    txtnota.setText(Integer.toString(nomornota));
 }
 
     
@@ -56,8 +42,7 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
      */
     public Form_Barang_Masuk() {
         initComponents();
-        //loadData();
-        //kosong();
+        loadData();
         TampilComboJenis();
         TampilComboJenis1();
         TampilComboJenis2();
@@ -288,6 +273,11 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         txtsubtotal.setEnabled(false);
 
         btnadditem.setText("Add Item");
+        btnadditem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnadditemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -506,6 +496,47 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void loadData() {
+        
+        //membuat model
+        model = new DefaultTableModel();
+        
+        //menghapus seluruh data
+        model.getDataVector().removeAllElements();
+        //memberitahu bahwa data telah kosong
+        model.fireTableDataChanged();
+        
+        tabelbarangmasuk.setModel(model);
+        model.addColumn("NoNota");
+        model.addColumn("KodeBarang");
+        model.addColumn("Jumlah");
+        model.addColumn("Subtotal");
+        
+        try{
+        String sql = "SELECT * FROM tbldetailbrgmasuk";
+        
+        Connection c = koneksi.getKoneksi();
+        Statement s = c.createStatement();
+        ResultSet r = s.executeQuery(sql);
+        
+        while(r.next()){
+        //lakukan penelusuran baris
+        model.addRow(new Object[]{
+            r.getString(1),
+            r.getString(2),
+            r.getString(3),
+            r.getString(4)
+        });
+        }
+        tabelbarangmasuk.setModel(model);
+        
+        }catch(SQLException e){
+            System.out.println("Terjadi Error");
+        }
+            
+    }
+    
+    
     private void txthargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txthargaActionPerformed
@@ -518,13 +549,18 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
        
-        generateNomorNota();
+    nomornota++;
+    
+    txtnota.setText(Integer.toString(nomornota));
 
     LocalDate currentDate = LocalDate.now();
     tanggal = currentDate.getDayOfMonth();
     bulan = currentDate.getMonthValue();
     tahun = currentDate.getYear();
     txtbarangmasuk.setText(String.format("%02d/%02d/%d", tanggal, bulan, tahun));
+    String nomorNotaString = String.format("%02d%02d%04d%03d", tanggal, bulan, tahun, nomornota);
+    
+    txtnota.setText(nomorNotaString);
 
     setEnabledtrue();
     btnaddnew.setEnabled(false);
@@ -614,6 +650,46 @@ public class Form_Barang_Masuk extends javax.swing.JFrame {
     private void cmbpetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbpetugasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbpetugasActionPerformed
+
+    private void btnadditemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadditemActionPerformed
+        // TODO add your handling code here:
+        String nota = txtnota.getText();
+        String jumlah = txtjumlah.getText();
+        String subtotal = txtsubtotal.getText();
+        
+        String KB = cmbbarang.getSelectedItem().toString();
+
+        if ("".equals(nota) || "".equals(jumlah) ||
+            "".equals(subtotal) || "".equals(KB))
+        {
+            JOptionPane.showMessageDialog(this,"Harap Lengkapi Data","Error",JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            try{
+                Connection c = koneksi.getKoneksi();
+                String sql = "INSERT INTO tbldetailbrgmasuk VALUES (?, ?, ?, ?)";
+                PreparedStatement p = c.prepareStatement(sql);
+
+                p.setString(1, nota);
+                p.setString(2, KB);
+                p.setString(3,jumlah);
+                p.setString(4, subtotal);
+
+                p.executeUpdate();
+                p.close();
+
+                JOptionPane.showMessageDialog(null, "Data Berhasil Ditambah ! ");
+
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+
+            }finally{
+                loadData();
+                setEnabledfalse();
+                btnaddnew.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnadditemActionPerformed
 
     /**
      * @param args the command line arguments
