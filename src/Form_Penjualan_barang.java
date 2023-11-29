@@ -464,7 +464,7 @@ public class Form_Penjualan_barang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void btnaddnewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddnewActionPerformed
-        setEnabledtrue();
+      
         btnaddnew.setEnabled(false);    }//GEN-LAST:event_btnaddnewActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
