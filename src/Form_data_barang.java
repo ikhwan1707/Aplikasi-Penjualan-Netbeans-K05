@@ -149,6 +149,11 @@ public class Form_data_barang extends javax.swing.JFrame {
                 cmbkodejenisItemStateChanged(evt);
             }
         });
+        cmbkodejenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbkodejenisActionPerformed(evt);
+            }
+        });
 
         btncancel.setText("Cancel");
         btncancel.addActionListener(new java.awt.event.ActionListener() {
@@ -554,6 +559,10 @@ public class Form_data_barang extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_btncloseActionPerformed
+
+    private void cmbkodejenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbkodejenisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbkodejenisActionPerformed
 
     /**
      * @param args the command line arguments
